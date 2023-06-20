@@ -24,4 +24,8 @@ df.withColumn("date_type",col("input_timestamp").cast("date")).show(truncate=Fal
 df.withColumn("current__date",current_date())\
     .withColumn("current_timestamp",current_timestamp()).show(truncate=False)
 
+#Date & Timestamp into custom format
+df.withColumn("date_format",date_format(current_date(),"MM-dd-yyyy")) \
+  .withColumn("to_timestamp",to_timestamp(current_timestamp(),"MM-dd-yyyy HH mm ss SSS")) \
+  .show(truncate=False)
 
